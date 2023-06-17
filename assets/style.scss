@@ -1,0 +1,1295 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik+Wet+Paint&display=swap');
+
+////////////////////////Variables//////////////////////////////////////////
+$orange : #D06632;
+$orangeTitre : #FF7A00;
+$blanc : #FFFFFF;
+$noir : #000000;
+$roboto : 'Roboto', sans-serif;
+$rubkikvinyl : 'Rubik Wet Paint', cursive;
+///////////////////////Mixins//////////////////////////////////////////////
+@mixin titrePage($color) {
+    .titrePage {
+        overflow: hidden;
+        margin-top: 75px;
+        margin-bottom: 25px;
+        width: 100%;
+        min-height: 5vh;
+        display: flex;
+        text-align: center;
+        h2 {
+            margin: auto;
+            color: $color;
+            font-family: $rubkikvinyl;
+            font-size: 40px;
+            text-align: center;
+        }
+    }
+}
+@mixin gridCont {
+    .grid-container {
+        width: 100%;
+        min-height: 80vh;
+        margin-top: 25px;
+        margin-bottom: 100px;
+        display: flex;
+        .grid {
+            margin: auto;
+            width: 80%;
+            min-height: 80vh;
+            display: grid;
+            gap: 75px;
+            grid-template-columns: repeat(3, 1fr);
+            @media all and (max-width:1200px) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @media all and (max-width:800px) {
+                grid-template-columns: 1fr;
+            }
+        }       
+    }
+}
+////////////////////Animation/////////////////////////////////////////////
+@keyframes opacity {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    1%{
+        display: block;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+///////////////////////Slide 1/////////////////////////////////////////////
+* {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+.slide {
+    min-height: 100vh;
+    overflow: hidden;
+}
+#menu {
+    width: 100%;
+    background-color: black;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: -100%;
+    z-index: 99;
+    transition: all 0.2s;
+    .menuNav{
+        margin: auto;
+        width: 70%;
+        height: 100%;
+        ul {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            li {
+                flex: 1;
+                list-style: none;
+                display: flex;
+                min-height: 15vh;  
+                div {
+                    width: 200px;
+                    height: 8vh;
+                    background-color: white;
+                    margin: auto;
+                    display: flex;    
+                    a {
+                        color: black;
+                    }
+                }    
+                a {
+                    text-decoration: none;
+                    margin: auto;
+                    color: white;
+                    font-family: $roboto;
+                    font-weight: bold;
+                }   
+                a:hover {
+                    text-decoration: underline;
+                    font-style: italic;
+                }
+            }
+        }    
+    }
+}
+.open {
+    left: -0% !important;
+}
+header{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    width: 100%;
+    margin: auto;
+    min-height: 8vh;
+    position: fixed;
+    z-index: 100;
+    .accHGau {
+        width: 20%;
+        display: flex;
+        h2{
+            display: flex;
+            margin: auto;
+            margin-left: 0;
+            a{
+                font-family: $rubkikvinyl;
+                color: $blanc;
+                font-size: 24px;
+                margin-left: 0;
+                text-decoration: none;
+            }
+        }
+
+        @media all and (max-width:1200px) {
+            width: 70%;
+        }
+    }
+    .accHDroi {
+        width: 60%;
+        min-height: 8vh;
+        font-style: $roboto;
+        ul {
+            display: flex;
+            width: 100%;
+            li {
+                flex: 1;
+                list-style: none;
+                display: flex;
+                min-height: 8vh;
+                div {
+                    width: 60%;
+                    height: 55%;
+                    background-color: white;
+                    margin: auto;
+                    display: flex;
+                    a {
+                        color: black;
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    margin: auto;
+                    color: white;
+                    font-family: $roboto;
+                    font-weight: bold;
+                }
+                a:hover {
+                    text-decoration: underline;
+                    font-style: italic;
+                }
+            }
+        }
+        @media all and (max-width:1200px) {
+            display: none;
+        }
+    }
+    .burger {
+        display: none;
+        cursor: pointer;
+        @media all and (max-width:1200px) {
+            width: 40px;
+            min-height: 8vh;
+            display: flex;
+            .barCont {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                min-height: 10vh;
+                padding-top: 20px;
+                margin: auto;
+                overflow: hidden;
+                .bar {
+                    width: 100%;
+                    height: 4px;
+                    background-color: white;
+                    margin-top: 6px;
+                }
+            }
+            .brgOpen {
+                .bar:nth-child(1){
+                    transform: translateY(15px) rotate(45deg);
+                    width: 40px;
+                }
+                .bar:nth-child(2){
+                    transform: translateY(5px) rotate(-45deg);
+                    width: 40px;
+                }
+                .bar:nth-child(3){
+                    transform: rotate(45deg);
+                    display: none;
+                }
+            }
+        }
+    }
+    @media all and (max-width:1200px) {
+        gap: 0;
+    }
+}
+#accueil {
+    background-image: url(../images/FondAccueil2.jpg);
+    background-position: center center;
+    background-repeat: none;
+    background-size: cover;
+    .titreAcc{
+        font-family: $rubkikvinyl;
+        color: $noir;
+        width: 100%;
+        min-height: 45vh;
+        display: flex;
+            h1{
+                font-size: 80px;
+                margin: auto;
+                margin-bottom: 0;
+                text-align: center;
+                @media all and (max-width:600px) {
+                    font-size: 60px;
+                }
+                @media all and (max-width:400px) {
+                    font-size: 50px;
+                }
+                @media all and (max-width:1200px) {
+                    margin: auto;
+                }
+            }
+            @media all and (max-width:1200px) {
+                min-height: 30vh;
+                margin-top: 100px;
+            }
+    }
+    .dateAcc{
+        font-family: $rubkikvinyl;
+        color: $orangeTitre;
+        width: 55%;
+        min-height: 20vh;
+        margin: auto;
+        display: flex;
+            h2{
+                font-size: 40px;
+                margin: auto;
+                margin-left: 0;
+                text-align: center;
+                @media all and (max-width:1200px) {
+                    margin: auto;
+                }
+            }
+        @media all and (max-width:1200px) {
+            width: 100%;
+        }
+    }
+    .btnAcc{
+        display: none;
+        @media all and (max-width:1200px) {
+            width: 60%;
+            min-height: 8vh;
+            margin: auto;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-between;
+            span {
+                padding: 0px 50px;
+                background-color: $blanc;
+                display: flex;
+                a {
+                    margin: auto;
+                    text-decoration: none;
+                    font-family: $roboto;
+                    color: $noir;
+                    font-size: 24px;
+                }
+                @media all and (max-width:600px) {
+                    padding: 0px 18px;
+                }
+            }
+            span:nth-child(2){
+                background-color: $noir; 
+                a {
+                    color: $blanc;
+                }
+            }
+            @media all and (max-width:800px) {
+                width: 80%;
+            }
+        }
+    }
+    @media all and (max-width:1200px) {
+        background-position: 0 center;
+        background-repeat: none;
+    }
+}
+//////////////////////////////////Slide Line Up Accueil////////////////////
+#lineUpH {
+    background-color: $orange;
+    @include titrePage($noir);
+    @include gridCont;
+    .caseLHA {
+        min-height: 80vh;
+        .dateLH {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            h2 {
+                color: $blanc;
+                font-family: $rubkikvinyl;
+                font-size: 40px;
+                margin: auto;
+            }
+        }
+        .imgHaut {
+            width: 100%;
+            height: 30vh;
+            display: flex;
+            flex-direction: column;
+            cursor: default;
+            transition: 2s;
+            .imgHautImg {
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-repeat: none;
+                background-position: center center;
+            }
+            #NISKA, #ORELSAN, #DJADJA, #KAARIS, #ANGELE, #BOOBA, #Damso {
+                background-position: center center;
+            }
+            #Ninho {
+                background-image: url(../images/NinhoAcc.jpg);
+            }
+            #NISKA {
+                background-image: url(../images/Niska.jpg);
+            }
+            #ORELSAN {
+                background-image: url(../images/Orelsan.jpg);
+            }
+            #Jul {
+                background-image: url(../images/Jul.jpeg);
+            }
+            #DJADJA {
+                background-image: url(../images/DjadjaDinaz300.jpg);
+            }
+            #KAARIS {
+                background-image: url(../images/Kaaris300x300.jpg);
+            }
+            #Damso {
+                background-image: url(../images/Damso.jpg);
+            }
+            #ANGELE {
+                background-image: url(../images/Angele.jpg);
+            }
+            #BOOBA {
+                background-image: url(../images/Booba.jpg);
+            }
+            .nomImgHaut {   
+                width: 100%;
+                height: 20%;
+                display: flex;
+                background-color: $blanc;
+                h4{
+                    margin: auto;
+                    color: $noir;
+                    font-family: $rubkikvinyl;
+                    font-size: 18px;
+                }
+                .longH4{
+                    @media all and (max-width:925px) {
+                        font-size: 14px;
+                    }
+                    @media all and (max-width:800px) {
+                        font-size: 18px;
+                    }
+                    @media all and (max-width:425px) {
+                        font-size: 14px;
+                    }
+                }
+                @media (min-width : 1200px) {
+                    width: 100%;
+                    flex: 0;
+                    display: flex;
+                    background-color: $blanc;
+                    h4{
+                        display: none;
+                        opacity: 0;
+                    }
+                }
+            }            
+        }
+        .imgHaut:hover .nomImgHaut {
+            @media (min-width : 1200px) {
+            flex: 2;
+            transition: 0.3s;
+                h4{
+                    opacity: 1;
+                    display: block;
+                    margin: auto;
+                    color: $noir;
+                    font-family: $rubkikvinyl;
+                    font-size: 18px;
+                    animation-name: opacity;
+                    animation-duration: 3s;
+                    animation-fill-mode: backwards;
+                }
+            }
+            
+        }
+        .imgHaut:hover .imgHautImg {
+            @media (min-width : 1200px) {
+                width: 100%;
+                height: 80%;
+                transition: 0.3s;
+            }
+        }
+        .imgBas{
+            width: 100%;
+            height: 30vh;
+            display: flex;
+        }  
+        .btnLU {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            justify-content: space-around;
+            .btnLUBtn, .btnLUBtn2 {
+                margin-top: 2.5vh;
+                width: 150px;
+                height: 50%;
+                background-color: $blanc; 
+                display: flex;
+                p {
+                    margin: auto;
+                    a{
+                        text-decoration: none;
+                        color: $noir;
+                        font-family: $roboto;
+                    }
+                    a:hover{
+                        font-weight: bold;
+                        text-decoration: underline;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .btnLUBtn2 {
+                background-color: black; 
+                p{
+                    a{
+                        color: $blanc;
+                    }
+                }
+            }
+        } 
+    }
+}
+////////////////////////////////INFOS//////////////////////////////////
+#infos {
+    background-color: $orange;
+    @include titrePage($noir);
+    .infoConteneur {
+        width: 80%;
+        min-height: 70vh;
+        margin: auto;
+    }
+    .infors {
+        width: 100%;
+        min-height: 40vh;
+        display: flex;
+        .infTxt {
+            font-family: $roboto;
+            flex: 1;
+            display: flex;
+            .infTxtCont {
+                width: 90%;
+                min-height: 5vh;
+                margin: auto;
+                overflow: hidden;
+                padding: 10px;
+                h3 {
+                    font-size: 24px;
+                    margin-bottom: 10px;
+                    margin-top: 10px;
+                }
+                p{
+                    font-size: 18px;
+                    margin-top: 10px;
+                    font-weight: bold;
+                    color: white;
+                    a{
+                        color: #001AFF;
+                        font-style: italic;
+                        font-size: 14px;
+                    }
+                }
+                .infoDinfo {
+                    width: 90%;
+                    min-height: 5vh;
+                    margin: auto;
+                    h4 {
+                        margin-top: 25px;
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+                    p{
+                        font-size: 18px;
+                        font-weight: bold;
+                        color: white;
+                    }
+                    ul {
+                        list-style: inside;
+                        color: white;
+                        font-size: 18px;
+                        li {
+                            margin-bottom: 6px;
+                        }
+                    }
+                }
+                @media (max-width : 1200px) {
+                    background-color: rgba(208, 102, 50,0.6);
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                }
+            }
+        }
+        .infImg {
+            flex: 1;
+        }
+    }
+    #infoH {
+        margin-top: 25px;
+        .infImg {
+            background-image: url(../images/FouleINfo.jpg);
+            background-position: center center;
+            background-size: cover;
+            @media (max-width : 1200px) {
+                display: none;
+            }
+        }
+        .infTxt {
+            @media (max-width : 1200px) {
+                background-image: url(../images/FouleINfo.jpg);
+                background-position: center center;
+                background-size: cover;
+            }
+        }
+    }
+    #infoB {
+        .infImg {
+            background-image: url(../images/ImgCamping.jpg);
+            background-position: center center;
+            background-size: cover;
+            @media (max-width : 1200px) {
+                display: none;
+            }
+        }
+        .infTxt {
+            @media (max-width : 1200px) {
+                background-image: url(../images/ImgCamping.jpg);
+            background-position: center center;
+            background-size: cover;
+            }
+        }
+    }
+}
+///////////////////CONTACT///////////////////////////
+#contact {
+    background-image: url(../images/imageContact.jpg);
+    min-height: 80vh;
+    background-position: center center;
+    background-size: cover;
+    @include titrePage($blanc);
+    .contactCont {
+        overflow: hidden;
+        margin-top: 45px !important; 
+        margin-bottom: 45px !important;
+        width: 80%;
+        min-height: 50vh;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.6);
+        .conContwrapper {
+            padding: 40px;
+            width: 70%;
+            min-height: 10vh;
+            margin: auto;
+            font-family: $roboto;
+            h3 {
+                margin-bottom: 5px;
+                font-size: 14px;
+                margin-top: 20px;
+            }
+            p{
+                margin-top: 5px;
+                margin-bottom: 5px;
+                span {
+                    color: $noir;
+                    font-size: 14px;
+                    text-decoration: underline;
+                }
+                .spanBold{
+                    color: $orange;
+                    font-weight: bold;
+                    font-size: 14px;
+                    text-decoration: none;
+                }
+            }
+            h2{
+                font-size: 18px;
+                margin-top: 22px;
+            }
+            form{
+                width: 100%;
+                min-height: 5vh;
+                .ligneHaut {
+                    width: 100%;
+                    min-height: 5vh;
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 25px;
+                    .nom {
+                        flex: 2;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 5vh;
+                        background-color: white;
+                        label{
+                            flex: 1;
+                            width: 100%;
+                            cursor: pointer;
+                        }
+                        input{
+                            flex: 3;
+                            width: 100%;
+                            border: none;
+                            cursor: pointer;
+                            font-family: $roboto;
+                        }
+                    }
+                    .email{
+                        flex: 3;
+                        display: flex;
+                        flex-direction: column;
+                        min-height: 5vh;
+                        background-color: white;
+                        label{
+                            flex: 1;
+                            width: 100%;
+                            cursor: pointer;
+                        }
+                        input{
+                            flex: 3;
+                            width: 100%;
+                            border: none;
+                            cursor: pointer;
+                            font-family: $roboto;
+                        }
+                    }
+                    @media (max-width : 600px) {
+                        flex-direction: column;
+                        gap: 20px;
+                    }
+                }
+                .textarea {
+                    margin-top: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    background-color: white;
+                    min-height: 15vh;
+                    label{
+                        flex: 1;
+                        width: 100%;
+                        cursor: pointer;
+                    }
+                    textarea {
+                        flex: 8;
+                        width: 100%;
+                        min-height: 10vh;
+                        resize: none;
+                        border: none;
+                        cursor: pointer;
+                        font-family: $roboto;
+                    }
+                }
+                .btnSubmit {
+                    width: 100%;
+                    min-height: 3vh;
+                    margin-top: 20px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    input {
+                        width: 108px;
+                        height: 26px;
+                        background-color: $orange;
+                        color: white;
+                        font-family: $roboto;
+                        border: none;
+                        font-size: 14px;
+                        margin: auto;
+                        margin-left: 0;
+                        cursor: pointer;
+                        @media (max-width : 800px) {
+                            margin: auto;
+                        }
+                    }
+                }
+            }
+            @media (max-width : 1200px) {
+                width: 90%;
+                padding: 0;
+            }
+        }
+        @media (max-width : 1200px) {
+            width: 90%;
+        }
+        @media (max-width : 600px) {
+            width: 100%;
+        }
+    }
+}
+//////////////////////////FOOTER////////////////////////////////////
+footer {
+    width: 100%;
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    .footHaut {
+        width: 80%;
+        min-height: 5vh;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: black;
+        margin: 0 auto;
+        margin-top: 25px;
+        .footMedia {
+            display: flex;
+            cursor: pointer;
+            justify-content: left;
+            height: 5vh;
+            width: 30%;
+            gap: 30px;
+            div {
+                width: 50px;
+                height: 50px;
+                display: flex;
+                svg{
+                    margin: auto;
+                    width: 30px;
+                    height: 30px;
+                    fill: white;
+                }
+            }
+            @media (max-width : 1000px) {
+                width: 100%;
+                justify-content: center;
+                margin-left: 0;
+            }
+        }
+        @media (max-width : 1000px) {
+            width: 100%;
+        }
+        .footNav {
+            width: 50%;
+            height: 5vh;
+            font-style: $roboto;
+            ul {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                li {
+                    flex: 1;
+                    list-style: none;
+                    display: flex;
+                    height: 5vh;
+                    div {
+                        width: 70%;
+                        height: 85%;
+                        background-color: white;
+                        margin: auto;
+                        display: flex;
+                        a {
+                            color: black;
+                        }
+                    }
+                    a {
+                        text-decoration: none;
+                        margin: auto;
+                        color: white;
+                        font-family: $roboto;
+                        font-weight: bold;
+                        @media (max-width : 600px) {
+                            font-size: 12px;
+                        }
+                    }
+                    a:hover {
+                        text-decoration: underline;
+                        font-style: italic;
+                    }
+                }
+            }
+            @media (max-width : 1000px) {
+                width: 100%;
+                margin-top: 20px;
+            }
+        }
+    }
+    .sponsors {
+        width: 80%;
+        margin: 0 auto;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        .sponsor {
+            width: 10vh;
+            height: 10vh;
+            display: flex;
+            svg {
+                margin: auto;
+                width: 10vh;
+                height: 10vh;
+                fill: white;
+            }
+        }
+        @media (max-width : 1000px) {
+            width: 100%;
+        }
+    }
+    .footBas {
+        width: 100%;
+        margin: 0 auto;
+        color: white;
+        font-family: $roboto;
+        margin-top: 5px;
+        min-height: 2vh;
+        background-color: #151010;
+        display: flex;
+        justify-content: space-between;
+        word-wrap: break-word;
+        span{
+            flex: 1;
+            text-align: center;
+        }
+        @media (max-width : 1000px) {
+            width: 100%;
+            span{
+                width: 30%;
+                text-align: center;
+            }
+            .fBG{
+                width: 70%;
+            }
+        }
+    }
+}
+//////////////////////////Line UP 28 JUIN////////////////////////
+#lineUp1 {
+    background-color: $orange;
+    @include titrePage($noir);
+    .listeLUP{
+        width: 100%;
+        height: 5vh;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        div{
+            width: 100px;
+            height: 5vh;
+            display: flex;
+            a{
+                margin: auto;
+                color: $blanc;
+                font-family: $roboto;
+                text-decoration: none;
+                font-weight: bold;
+            }
+            a:hover{
+                text-decoration: underline;
+            }
+            @media (max-width : 1000px) {
+                width: 60px;
+            }
+        }
+        .active {
+            background-color: white;
+            a{
+                color: $noir;
+            }
+        }
+    }
+    @include gridCont;
+    .card-container-artiste {
+        margin: 0 auto;
+        position: relative;
+        height: 350px;
+        width: 300px;
+        cursor: pointer;
+        .card-artiste{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            transition: all 1s ease;
+            transform-style: preserve-3d;
+            .cardFront-artiste {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                backface-visibility: hidden;
+                background-color: blue;
+                display: flex;
+                flex-direction: column;
+                .imgArt {
+                    width: 300px;
+                    height: 300px;
+                    img {
+                        width: 300px;
+                        height: 300px;
+                    }
+                }
+                .nomArt {
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    background-color: $blanc;
+                    h4{
+                        margin: auto;
+                        font-family: $rubkikvinyl;
+                        font-size: 24px;
+                        color: $noir;
+                    }
+                }
+                .cabal {
+                    h4 {
+                        font-size: 20px;
+                    }
+                }
+            }
+            .cardBack-artiste {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                backface-visibility: hidden;
+                transform: rotateY(-180deg);
+                background-color: black;
+                .datePassage {
+                    width: 100%;
+                    height: 50px;
+                    display: flex;
+                    span{
+                        margin: auto;
+                        color: white;
+                        font-family: $roboto;
+                    }
+                }
+                .infoArtiste{
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    flex-direction: row;
+                    .nationalite {
+                        flex: 2;
+                        display: flex;
+                        .drapeau {
+                            width: 80px;
+                            height: 80px;
+                            margin: auto;
+                            border-radius: 40px;
+                            background-color: black;
+                            img {
+                                width: 80px;
+                                height: 80px;
+                                border-radius: 40px;
+                            }
+                        }
+                    }
+                    .nomsArtiste {
+                        flex: 3;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        gap: 10px;
+                        span {
+                            margin: 0 auto;
+                            margin-left: 0;
+                            color: white;
+                            font-family: $roboto;
+                        }
+                    }
+                }
+                .nomPrincipal {
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    h2{
+                        margin: auto;
+                        color: white;
+                        font-family: $rubkikvinyl;
+                    }
+                }
+                .cabal {
+                    h2 {
+                        font-size: 20px;
+                    }
+                }
+                .reseauxArtistes {
+                    width: 100%;
+                    height: 100px;
+                    display: flex;
+                    .liensArtistes {
+                        margin: auto;
+                        width: 100%;
+                        height: 50px;
+                        display: flex;
+                        justify-content: center;
+                        gap: 20px;
+                        div {
+                            width: 50px;
+                            height: 50px;
+                            a{
+                                width: 50px;
+                                height: 50px;
+                                cursor: alias;
+                                display: flex;
+                                svg {
+                                    margin: auto;
+                                    fill: $blanc;
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                            }
+                        }
+                        .nonDispo {
+                            width: 50px;
+                            height: 50px;
+                            cursor :not-allowed;
+                            display: flex;
+                            svg {
+                                margin: auto;
+                                fill: grey;
+                                width: 40px;
+                                height: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .card-container-artiste:hover .card-artiste .cardFront-artiste{
+        .imgArt {
+            filter: grayscale(0.5);
+        }
+        .nomArt {
+            background-color: black;
+            h4 {
+                color: $blanc;
+            }
+        }
+    }
+    .tourne .card-artiste{
+        transform: rotateY(-180deg);
+    }
+}
+////////////////TICKETS///////////////////
+#tickets {
+    background-color: $orange;
+    @include titrePage($noir);
+    .panier{
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        height: 5vh;
+        display: flex;
+        .imPanier{
+            width: 40px;
+            height: 40px;
+            margin: auto;
+            margin-left: 0;
+            cursor: pointer;
+            display: flex;
+            svg{
+                margin: auto;
+                width: 40px;
+                height: 40px;
+                fill: black;
+            }
+            @media (max-width : 1000px) {
+                margin: auto;
+            }
+        }
+        @media (max-width : 1000px) {
+            width: 100%;
+        }
+    }
+    .commande{
+        display: none;   
+    }
+    .ouverte{
+        display: block;
+        padding: 50px;
+        width: 80%;
+        background-color: $blanc;
+        margin: 0 auto;
+        min-height: 30vh;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        .listeArticle{
+            width: 70%;
+            min-height: 20vh;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: $blanc;
+            font-family: $roboto;          
+            .article {
+                flex: 1;
+                display: flex;
+                justify-content: space-between;
+                div{
+                    flex: 3;
+                    display: flex;
+                    color: $noir;
+                    span{
+                        margin: auto;text-align: center;
+                    }
+                }
+                .tickMoins, .tickPlus {
+                    flex: 1;
+                    background-color: $orange;
+                    cursor: pointer;
+                    color: $blanc;
+                }
+                .ticketSomme {
+                    flex: 2;
+                }
+                @media (max-width : 1000px) {
+                    width: 100%;
+                }
+            }
+            @media (max-width : 1000px) {
+                width: 100%;
+            }
+        }
+        .montantTotal{
+            width: 25%;
+            min-height: 10vh;
+            display: flex;
+            .contMontant {
+                margin: auto;
+                width: 300px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                color: $blanc;
+                font-family: $roboto;
+                .montant {
+                    flex: 1;
+                    display: flex;
+                    color: $noir;
+                    font-weight: bold;
+                    span {
+                        margin: auto;
+                    }
+                }
+                .payer {
+                    flex: 1;
+                    display: flex;
+                    background-color: $orange;
+                    font-weight: bold;
+                    cursor: pointer;
+                    span{
+                        margin: auto;
+                    }
+                }
+            }
+            @media (max-width : 1000px) {
+                width: 100%;
+            }
+        }
+        @media (max-width : 1200px) {
+            padding: 30px 20px;
+        }
+    }
+    .gridTicket {
+        width: 80%;
+        min-height: 40vh;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        margin-top: 50px;
+        gap: 150px;
+        .ticket {
+            height: 400px;
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            .hautTicket {
+                flex: 6;
+                color: $blanc;
+                font-family: $roboto;
+                padding: 20px;
+                font-size: 14px;
+                h3{
+                    text-align: center;
+                    font-size: 28px;
+                    margin-bottom: 15px;
+                }
+                ul {
+                    list-style: inside;
+
+                    li{
+                        margin-top: 5px;
+                    }
+                }
+                .prixTicket {
+                    width: 100%;
+                    display: flex;
+
+                    span {
+                        margin: auto;
+                        margin-bottom: 0;
+                    }
+                }
+                .num3{
+                    height: 18vh;
+                }
+                .num2{
+                    height: 17vh;
+                }
+                .num4 {
+                    height: 12vh;
+                }
+            }
+            .lienTicket {
+                cursor: pointer;
+                flex: 1;
+                background-color: white;
+                display: flex;
+                span {
+                    margin: auto;
+                    color: $noir;
+                    font-family: $roboto;
+                    font-weight: bold;
+                }
+            }
+        }
+        @media all and (max-width:1200px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media all and (max-width:800px) {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+    }
+}
