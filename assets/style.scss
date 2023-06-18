@@ -73,6 +73,10 @@ $rubkikvinyl : 'Rubik Wet Paint', cursive;
     min-height: 100vh;
     overflow: hidden;
 }
+#tickets{
+    min-height: 80vh !important;
+    width: 100%;
+}
 #menu {
     width: 100%;
     background-color: black;
@@ -1100,7 +1104,6 @@ footer {
 ////////////////TICKETS///////////////////
 #tickets {
     background-color: $orange;
-    min-height: 80vh;
     @include titrePage($noir);
     .panier{
         width: 80%;
